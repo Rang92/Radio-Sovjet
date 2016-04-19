@@ -31,6 +31,8 @@ if __name__ == '__main__':
     breadth = []
     depth = []
 
+    stypes = [20, 22, 28, 32, 37, 39, 41]
+
     for start in range(0, len(Ukraine().as_list())):
         country = Ukraine()
 
@@ -39,7 +41,7 @@ if __name__ == '__main__':
         trav_cell_breadth(oblasts[start])
 
         # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-        weight = reduce(lambda x, y: x + y, [e.senderType for e in country.as_list()])
+        weight = sum([stypes[e.senderType-1] for e in country.as_list()])
         # print 'Start:', oblasts[start].name, weight
         breadth.append(weight)
 
@@ -51,7 +53,7 @@ if __name__ == '__main__':
         trav_cell_depth(oblasts[start])
 
         # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-        weight = reduce(lambda x, y: x + y, [e.senderType for e in country.as_list()])
+        weight = sum([stypes[e.senderType-1] for e in country.as_list()])
         # print 'Start:', oblasts[start].name, weight
         depth.append(weight)
 
