@@ -1,4 +1,4 @@
-from maps import Ukraine
+from maps import USA
 
 
 def lowest_sendertype(cell):
@@ -31,30 +31,58 @@ if __name__ == '__main__':
     breadth = []
     depth = []
 
+    breadthc = []
+    depthc = []
+
     stypes = [20, 22, 28, 32, 37, 39, 41]
 
-    for start in range(0, len(Ukraine().as_list())):
-        country = Ukraine()
+    for start in range(0, len(USA().as_list())):
+        country = USA()
 
         oblasts = country.as_list()
 
         trav_cell_breadth(oblasts[start])
 
-        # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-        weight = sum([stypes[e.senderType-1] for e in country.as_list()])
+        for oblast in oblasts:
+            if oblast.senderType == 0: 
+                if len(oblast.neighbours) == 0:
+                    oblast.senderType = 1
+                else:
+                    trav_cell_breadth(oblast)
+
+        for o in oblasts:
+            if o.senderType == 0: print  "ERROR"
+
+        # Weergeef de som van de zendertypes om een indicatie geven te van hoe laag de zendertypes zijn gebleven.
+        weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
+        weight = sum([e.senderType for e in country.as_list()])
         # print 'Start:', oblasts[start].name, weight
+        breadthc.append(weightc)
         breadth.append(weight)
 
-    for start in range(0, len(Ukraine().as_list())):
-        country = Ukraine()
+    for start in range(0, len(USA().as_list())):
+        country = USA()
 
         oblasts = country.as_list()
 
         trav_cell_depth(oblasts[start])
 
+        for oblast in oblasts:
+            if oblast.senderType == 0: 
+                if len(oblast.neighbours) == 0:
+                    oblast.senderType = 1
+                else:
+                    trav_cell_depth(oblast)
+
+        for o in oblasts:
+            if o.senderType == 0: print  "ERROR"
+
         # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-        weight = sum([stypes[e.senderType-1] for e in country.as_list()])
+        weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
+        weight = sum([e.senderType for e in country.as_list()])
         # print 'Start:', oblasts[start].name, weight
+        depthc.append(weightc)
         depth.append(weight)
 
     print 'DFS: {}, BFS: {}'.format(min(depth), min(breadth))
+    print 'DFS: {}, BFS: {}'.format(min(depthc), min(breadthc))
