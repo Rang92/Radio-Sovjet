@@ -81,6 +81,7 @@ if __name__ == '__main__':
         weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
         weight = sum([e.senderType for e in country.as_list()])
         # print 'Start:', oblasts[start].name, weight
+        # print 'Start:', oblasts[start].name, weightc
         depthc.append(weightc)
         depth.append(weight)
 
