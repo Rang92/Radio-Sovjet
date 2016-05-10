@@ -1,5 +1,5 @@
 from data_structures import Tree
-from maps import Ukraine
+from maps import USA, Ukraine
 
 
 def lowest_sendertype(cell):
@@ -70,29 +70,31 @@ if __name__ == '__main__':
     res = []
     sums = []
 
-    for i in range(len(Ukraine().as_list())):
-        oblast = Ukraine().as_list()[i]
+    for c in [USA, Ukraine]:
+        for i in range(len(c().as_list())):
+            oblast = c().as_list()[i]
 
-        tree = Tree()
-        ttree = tree
-        l = []
-        to_tree(oblast, l)
+            tree = Tree()
+            ttree = tree
+            l = []
+            to_tree(oblast, l)
 
-        for x in l:
-            ttree.this = x
-            ttree.next = Tree()
-            ttree.next.parent = ttree
+            for x in l:
+                ttree.this = x
+                ttree.next = Tree()
+                ttree.next.parent = ttree
 
-            ttree = ttree.next
+                ttree = ttree.next
 
-        try:
-            trav_cell_depth(tree)
-        except:
-            continue
+            try:
+                trav_cell_depth(tree)
+            except:
+                continue
 
-        res.append(tree)
-        ttree = tree
+            res.append(tree)
+            ttree = tree
 
-        print tree_dist(ttree, {1: 0, 2: 0, 3: 0, 4: 0})
+            print tree_dist(ttree, {1: 0, 2: 0, 3: 0, 4: 0})
 
-        nesting = 1
+            nesting = 1
+        print '-----------'

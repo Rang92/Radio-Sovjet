@@ -163,7 +163,6 @@ class Ukraine:
 class USA: 
     def __init__(self):
         self.Alabama = CountryElement("Alabama")
-        self.Alaska = CountryElement("Alaska")
         self.Arizona = CountryElement("Arizona")
         self.Arkansas = CountryElement("Arkansas")
         self.California = CountryElement("California")
@@ -172,7 +171,6 @@ class USA:
         self.Delaware = CountryElement("Delaware")
         self.Florida = CountryElement("Florida")
         self.Georgia = CountryElement("Georgia")
-        self.Hawaii = CountryElement("Hawaii")
         self.Idaho = CountryElement("Idaho")
         self.Illinois = CountryElement("Illinois")
         self.Indiana = CountryElement("Indiana")
