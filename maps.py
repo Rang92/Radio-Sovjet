@@ -475,3 +475,211 @@ class USA:
     
     def as_list(self):
         return [a for a in [getattr(self, attr) for attr in dir(self)] if isinstance(a, CountryElement)]
+
+
+class China: 
+    def __init__(self):
+        self.AnhuiProvince = CountryElement("Anhui Province")
+        self.BeijingMunicipality = CountryElement("Beijing Municipality")
+        self.ChongqingMunicipality = CountryElement("Chongqing Municipality")
+        self.FujianProvince = CountryElement("Fujian Province")
+        self.GansuProvince = CountryElement("Gansu Province")
+        self.GuangdongProvince = CountryElement("Guangdong Province")
+        self.GuangxiZhuangAutonomousRegion = CountryElement("Guangxi Zhuang Autonomous Region")
+        self.GuizhouProvince = CountryElement("Guizhou Province")
+        self.HebeiProvince = CountryElement("Hebei Province")
+        self.HeilongjiangProvince = CountryElement("Heilongjiang Province")
+        self.HenanProvince = CountryElement("Henan Province")
+        self.HongKongSpecialAdministrativeRegion = CountryElement("Hong Kong Special Administrative Region")
+        self.HubeiProvince = CountryElement("Hubei Province")
+        self.HunanProvince = CountryElement("Hunan Province")
+        self.InnerMongoliaAutonomousRegion = CountryElement("Inner Mongolia Autonomous Region")
+        self.JiangsuProvince = CountryElement("Jiangsu Province")
+        self.JiangxiProvince = CountryElement("Jiangxi Province")
+        self.JilinProvince = CountryElement("Jilin Province")
+        self.LiaoningProvince = CountryElement("Liaoning Province")
+        self.Macau = CountryElement("Macau")
+        self.NingxiaHuiAutonomousRegion = CountryElement("Ningxia Hui Autonomous Region")
+        self.QinghaiProvince = CountryElement("Qinghai Province")
+        self.ShaanxiProvince = CountryElement("Shaanxi Province")
+        self.ShandongProvince = CountryElement("Shandong Province")
+        self.ShanghaiMunicipality = CountryElement("Shanghai Municipality")
+        self.ShanxiProvince = CountryElement("Shanxi Province")
+        self.SichuanProvince = CountryElement("Sichuan Province")
+        self.TianjinMunicipality = CountryElement("Tianjin Municipality")
+        self.TibetAutonomousRegion = CountryElement("Tibet Autonomous Region")
+        self.XinjiangUyghurAutonomousRegion = CountryElement("Xinjiang Uyghur Autonomous Region")
+        self.YunnanProvince = CountryElement("Yunnan Province")
+        self.ZhejiangProvince = CountryElement("Zhejiang Province")
+
+        self.AnhuiProvince.neighbours.append(self.HenanProvince)
+        self.AnhuiProvince.neighbours.append(self.HubeiProvince)
+        self.AnhuiProvince.neighbours.append(self.JiangsuProvince)
+        self.AnhuiProvince.neighbours.append(self.JiangxiProvince)
+        self.AnhuiProvince.neighbours.append(self.ShandongProvince)
+        self.AnhuiProvince.neighbours.append(self.ZhejiangProvince)
+
+        self.BeijingMunicipality.neighbours.append(self.HebeiProvince)
+        self.BeijingMunicipality.neighbours.append(self.TianjinMunicipality)
+
+        self.ChongqingMunicipality.neighbours.append(self.GuizhouProvince)
+        self.ChongqingMunicipality.neighbours.append(self.HubeiProvince)
+        self.ChongqingMunicipality.neighbours.append(self.HunanProvince)
+        self.ChongqingMunicipality.neighbours.append(self.ShaanxiProvince)
+        self.ChongqingMunicipality.neighbours.append(self.SichuanProvince)
+
+        self.FujianProvince.neighbours.append(self.GuangdongProvince)
+        self.FujianProvince.neighbours.append(self.JiangxiProvince)
+        self.FujianProvince.neighbours.append(self.ZhejiangProvince)
+
+        self.GansuProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.GansuProvince.neighbours.append(self.NingxiaHuiAutonomousRegion)
+        self.GansuProvince.neighbours.append(self.QinghaiProvince)
+        self.GansuProvince.neighbours.append(self.ShaanxiProvince)
+        self.GansuProvince.neighbours.append(self.SichuanProvince)
+        self.GansuProvince.neighbours.append(self.XinjiangUyghurAutonomousRegion)
+
+        self.GuangdongProvince.neighbours.append(self.FujianProvince)
+        self.GuangdongProvince.neighbours.append(self.GuangxiZhuangAutonomousRegion)
+        self.GuangdongProvince.neighbours.append(self.HongKongSpecialAdministrativeRegion)
+        self.GuangdongProvince.neighbours.append(self.HunanProvince)
+        self.GuangdongProvince.neighbours.append(self.JiangxiProvince)
+        self.GuangdongProvince.neighbours.append(self.Macau)
+
+        self.GuangxiZhuangAutonomousRegion.neighbours.append(self.GuangdongProvince)
+        self.GuangxiZhuangAutonomousRegion.neighbours.append(self.GuizhouProvince)
+        self.GuangxiZhuangAutonomousRegion.neighbours.append(self.HunanProvince)
+        self.GuangxiZhuangAutonomousRegion.neighbours.append(self.YunnanProvince)
+
+        self.GuizhouProvince.neighbours.append(self.ChongqingMunicipality)
+        self.GuizhouProvince.neighbours.append(self.GuangxiZhuangAutonomousRegion)
+        self.GuizhouProvince.neighbours.append(self.HunanProvince)
+        self.GuizhouProvince.neighbours.append(self.SichuanProvince)
+        self.GuizhouProvince.neighbours.append(self.YunnanProvince)
+
+        self.HebeiProvince.neighbours.append(self.BeijingMunicipality)
+        self.HebeiProvince.neighbours.append(self.HenanProvince)
+        self.HebeiProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.HebeiProvince.neighbours.append(self.LiaoningProvince)
+        self.HebeiProvince.neighbours.append(self.ShandongProvince)
+        self.HebeiProvince.neighbours.append(self.ShanxiProvince)
+        self.HebeiProvince.neighbours.append(self.TianjinMunicipality)
+
+        self.HeilongjiangProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.HeilongjiangProvince.neighbours.append(self.JilinProvince)
+
+        self.HenanProvince.neighbours.append(self.AnhuiProvince)
+        self.HenanProvince.neighbours.append(self.ShandongProvince)
+        self.HenanProvince.neighbours.append(self.ShanxiProvince)
+
+        self.HongKongSpecialAdministrativeRegion.neighbours.append(self.GuangdongProvince)
+
+        self.HubeiProvince.neighbours.append(self.AnhuiProvince)
+        self.HubeiProvince.neighbours.append(self.ChongqingMunicipality)
+        self.HubeiProvince.neighbours.append(self.HenanProvince)
+        self.HubeiProvince.neighbours.append(self.HunanProvince)
+        self.HubeiProvince.neighbours.append(self.JiangxiProvince)
+        self.HubeiProvince.neighbours.append(self.ShaanxiProvince)
+
+        self.HunanProvince.neighbours.append(self.ChongqingMunicipality)
+        self.HunanProvince.neighbours.append(self.GuangdongProvince)
+        self.HunanProvince.neighbours.append(self.GuangxiZhuangAutonomousRegion)
+        self.HunanProvince.neighbours.append(self.GuizhouProvince)
+        self.HunanProvince.neighbours.append(self.HubeiProvince)
+        self.HunanProvince.neighbours.append(self.JiangxiProvince)
+
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.GansuProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.HebeiProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.HeilongjiangProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.JilinProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.LiaoningProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.NingxiaHuiAutonomousRegion)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.ShaanxiProvince)
+        self.InnerMongoliaAutonomousRegion.neighbours.append(self.ShanxiProvince)
+
+        self.JiangsuProvince.neighbours.append(self.AnhuiProvince)
+        self.JiangsuProvince.neighbours.append(self.ShandongProvince)
+        self.JiangsuProvince.neighbours.append(self.ShanghaiMunicipality)
+        self.JiangsuProvince.neighbours.append(self.ZhejiangProvince)
+
+        self.JiangxiProvince.neighbours.append(self.AnhuiProvince)
+        self.JiangxiProvince.neighbours.append(self.FujianProvince)
+        self.JiangxiProvince.neighbours.append(self.GuangdongProvince)
+        self.JiangxiProvince.neighbours.append(self.HubeiProvince)
+        self.JiangxiProvince.neighbours.append(self.HunanProvince)
+        self.JiangxiProvince.neighbours.append(self.ZhejiangProvince)
+
+        self.JilinProvince.neighbours.append(self.HeilongjiangProvince)
+        self.JilinProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.JilinProvince.neighbours.append(self.LiaoningProvince)
+
+        self.LiaoningProvince.neighbours.append(self.HebeiProvince)
+        self.LiaoningProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.LiaoningProvince.neighbours.append(self.JilinProvince)
+
+        self.Macau.neighbours.append(self.GuangdongProvince)
+
+        self.NingxiaHuiAutonomousRegion.neighbours.append(self.GansuProvince)
+        self.NingxiaHuiAutonomousRegion.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.NingxiaHuiAutonomousRegion.neighbours.append(self.ShaanxiProvince)
+
+        self.QinghaiProvince.neighbours.append(self.GansuProvince)
+        self.QinghaiProvince.neighbours.append(self.SichuanProvince)
+        self.QinghaiProvince.neighbours.append(self.TibetAutonomousRegion)
+        self.QinghaiProvince.neighbours.append(self.XinjiangUyghurAutonomousRegion)
+
+        self.ShaanxiProvince.neighbours.append(self.ChongqingMunicipality)
+        self.ShaanxiProvince.neighbours.append(self.GansuProvince)
+        self.ShaanxiProvince.neighbours.append(self.HenanProvince)
+        self.ShaanxiProvince.neighbours.append(self.HubeiProvince)
+        self.ShaanxiProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.ShaanxiProvince.neighbours.append(self.NingxiaHuiAutonomousRegion)
+        self.ShaanxiProvince.neighbours.append(self.ShanxiProvince)
+        self.ShaanxiProvince.neighbours.append(self.SichuanProvince)
+
+        self.ShandongProvince.neighbours.append(self.AnhuiProvince)
+        self.ShandongProvince.neighbours.append(self.HebeiProvince)
+        self.ShandongProvince.neighbours.append(self.HenanProvince)
+        self.ShandongProvince.neighbours.append(self.JiangsuProvince)
+
+        self.ShanghaiMunicipality.neighbours.append(self.JiangsuProvince)
+        self.ShanghaiMunicipality.neighbours.append(self.ZhejiangProvince)
+
+        self.ShanxiProvince.neighbours.append(self.HebeiProvince)
+        self.ShanxiProvince.neighbours.append(self.HenanProvince)
+        self.ShanxiProvince.neighbours.append(self.InnerMongoliaAutonomousRegion)
+        self.ShanxiProvince.neighbours.append(self.ShaanxiProvince)
+
+        self.SichuanProvince.neighbours.append(self.ChongqingMunicipality)
+        self.SichuanProvince.neighbours.append(self.GansuProvince)
+        self.SichuanProvince.neighbours.append(self.GuizhouProvince)
+        self.SichuanProvince.neighbours.append(self.QinghaiProvince)
+        self.SichuanProvince.neighbours.append(self.ShaanxiProvince)
+        self.SichuanProvince.neighbours.append(self.TibetAutonomousRegion)
+        self.SichuanProvince.neighbours.append(self.YunnanProvince)
+
+        self.TianjinMunicipality.neighbours.append(self.BeijingMunicipality)
+        self.TianjinMunicipality.neighbours.append(self.HebeiProvince)
+
+        self.TibetAutonomousRegion.neighbours.append(self.QinghaiProvince)
+        self.TibetAutonomousRegion.neighbours.append(self.SichuanProvince)
+        self.TibetAutonomousRegion.neighbours.append(self.XinjiangUyghurAutonomousRegion)
+        self.TibetAutonomousRegion.neighbours.append(self.YunnanProvince)
+
+        self.XinjiangUyghurAutonomousRegion.neighbours.append(self.GansuProvince)
+        self.XinjiangUyghurAutonomousRegion.neighbours.append(self.QinghaiProvince)
+        self.XinjiangUyghurAutonomousRegion.neighbours.append(self.TibetAutonomousRegion)
+
+        self.YunnanProvince.neighbours.append(self.GuangxiZhuangAutonomousRegion)
+        self.YunnanProvince.neighbours.append(self.GuizhouProvince)
+        self.YunnanProvince.neighbours.append(self.SichuanProvince)
+        self.YunnanProvince.neighbours.append(self.TibetAutonomousRegion)
+
+        self.ZhejiangProvince.neighbours.append(self.AnhuiProvince)
+        self.ZhejiangProvince.neighbours.append(self.FujianProvince)
+        self.ZhejiangProvince.neighbours.append(self.JiangsuProvince)
+        self.ZhejiangProvince.neighbours.append(self.JiangxiProvince)
+        self.ZhejiangProvince.neighbours.append(self.ShanghaiMunicipality)
+
+    def as_list(self):
+        return [a for a in [getattr(self, attr) for attr in dir(self)] if isinstance(a, CountryElement)]

@@ -1,31 +1,36 @@
 from maps import USA
+from maps import Ukraine
 
+# maak een lijst om bij te houden welk zendertype hoevaak gebruikt is
+hist = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 
 def lowest_sendertype(cell):
     # Haal alle gebruikte zendertypes uit een lijst met de beschikbare zendertypes
     # Dus als zenders 1 en 2 zijn gebruikt, dan wordt (1, 2, 3, 4, 5) -> (3, 4, 5)
     # Om dit te doen moet van elke oblast het zendertype worden bepaald (lambda n: n.senderType)
-    return set(range(1, 8)) - set(map(lambda n: n.senderType, cell.neighbours))
 
+    available_senderTypes = list(set(range(1, 7)) - set(map(lambda n: n.senderType, cell.neighbours)))
 
-def trav_cell_breadth(cell):
-    nodes = [c for c in cell.neighbours if c.senderType == 0]
+    # sorteer de beschikbare zendertypes op gebruiktheid (minst gebruikt - meest gebruikt
+    sortedlist= sorted(available_senderTypes, key=lambda x: hist[x]) 
 
-    for c in nodes:
-        c.senderType = lowest_sendertype(c).pop()
+    # error checking
+    print hist
+    print sortedlist
 
-    for c in nodes:
-        trav_cell_breadth(c)
-
+    # return gesorteerde lijst
+    return sortedlist
 
 def trav_cell_depth(cell):
-    cell.senderType = lowest_sendertype(cell).pop()
+    cell.senderType = lowest_sendertype(cell)[0]
+
+    hist[cell.senderType]+=1
 
     neighs = [c for c in cell.neighbours if c.senderType == 0]
 
     while len(neighs) > 0:
         trav_cell_depth(neighs.pop())
-
+        neighs = [c for c in cell.neighbours if c.senderType == 0]
 
 if __name__ == '__main__':
     breadth = []
@@ -36,54 +41,22 @@ if __name__ == '__main__':
 
     stypes = [20, 22, 28, 32, 37, 39, 41]
 
-    for start in range(0, len(USA().as_list())):
-        country = USA()
+    # Depth First Search (= efficienter dan Breadth First Search)
+    country = USA()
+    oblasts = country.as_list()
+    trav_cell_depth(country.Minnesota)
 
-        oblasts = country.as_list()
+    # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
+    weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
+    weight = sum([e.senderType for e in country.as_list()])
+    # print 'Start:', oblasts[start].name, weight
+    # print 'Start:', oblasts[start].name, weightc
 
-        trav_cell_breadth(oblasts[start])
+    depthc.append(weightc)
+    depth.append(weight)
 
-        for oblast in oblasts:
-            if oblast.senderType == 0: 
-                if len(oblast.neighbours) == 0:
-                    oblast.senderType = 1
-                else:
-                    trav_cell_breadth(oblast)
+    # print resultaat
+    print hist
 
-        for o in oblasts:
-            if o.senderType == 0: print  "ERROR"
-
-        # Weergeef de som van de zendertypes om een indicatie geven te van hoe laag de zendertypes zijn gebleven.
-        weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
-        weight = sum([e.senderType for e in country.as_list()])
-        # print 'Start:', oblasts[start].name, weight
-        breadthc.append(weightc)
-        breadth.append(weight)
-
-    for start in range(0, len(USA().as_list())):
-        country = USA()
-
-        oblasts = country.as_list()
-
-        trav_cell_depth(oblasts[start])
-
-        for oblast in oblasts:
-            if oblast.senderType == 0: 
-                if len(oblast.neighbours) == 0:
-                    oblast.senderType = 1
-                else:
-                    trav_cell_depth(oblast)
-
-        for o in oblasts:
-            if o.senderType == 0: print  "ERROR"
-
-        # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-        weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
-        weight = sum([e.senderType for e in country.as_list()])
-        # print 'Start:', oblasts[start].name, weight
-        # print 'Start:', oblasts[start].name, weightc
-        depthc.append(weightc)
-        depth.append(weight)
-
-    print 'DFS: {}, BFS: {}'.format(min(depth), min(breadth))
-    print 'DFS: {}, BFS: {}'.format(min(depthc), min(breadthc))
+    print 'DFS: {}'.format(min(depth))
+    print 'DFS costs: {}'.format(min(depthc))
