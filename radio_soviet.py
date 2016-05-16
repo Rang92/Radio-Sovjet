@@ -1,5 +1,6 @@
 from maps import USA
 from maps import Ukraine
+from maps import China
 
 # maak een lijst om bij te houden welk zendertype hoevaak gebruikt is
 hist = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
