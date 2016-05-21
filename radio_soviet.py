@@ -1,6 +1,7 @@
 from maps import USA
 from maps import Ukraine
 from maps import China
+from maps import Russia
 
 # maak een lijst om bij te houden welk zendertype hoevaak gebruikt is
 hist = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
@@ -43,9 +44,9 @@ if __name__ == '__main__':
     stypes = [20, 22, 28, 32, 37, 39, 41]
 
     # Depth First Search (= efficienter dan Breadth First Search)
-    country = USA()
+    country = Russia()
     oblasts = country.as_list()
-    trav_cell_depth(country.Minnesota)
+    trav_cell_depth(country.S14)
 
     # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
     weightc = sum([stypes[e.senderType-1] for e in country.as_list()])

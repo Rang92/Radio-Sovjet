@@ -1,5 +1,5 @@
 from data_structures import Tree
-from maps import USA, Ukraine, China
+from maps import USA, Ukraine, China, Russia
 
 def lowest_sendertype(cell):
     # Haal alle gebruikte zendertypes uit een lijst met de beschikbare zendertypes
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     res = []
     sums = []
 
-    for c in [USA, Ukraine, China]:
+    for c in [USA, Ukraine, China, Russia]:
         for i in range(len(c().as_list())):
             oblast = c().as_list()[i]
 
