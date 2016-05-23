@@ -1,12 +1,16 @@
 from maps import Ukraine
 
+# maak een lijst om bij te houden welk zendertype hoevaak gebruikt is
+hist = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 
 def lowest_sendertype(cell):
     # Haal alle gebruikte zendertypes uit een lijst met de beschikbare zendertypes
     # Dus als zenders 1 en 2 zijn gebruikt, dan wordt (1, 2, 3, 4, 5) -> (3, 4, 5)
     # Om dit te doen moet van elke oblast het zendertype worden bepaald (lambda n: n.senderType)
+    hist[cell.senderType]+=1
     return set(range(1, 8)) - set(map(lambda n: n.senderType, cell.neighbours))
 
+    
 
 if __name__ == '__main__':
     country = Ukraine()
@@ -21,3 +25,4 @@ if __name__ == '__main__':
 
     # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
     print reduce(lambda x, y: x + y, [e.senderType for e in country.as_list()])
+    print hist

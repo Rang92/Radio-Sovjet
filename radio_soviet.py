@@ -17,8 +17,8 @@ def lowest_sendertype(cell):
     sortedlist= sorted(available_senderTypes, key=lambda x: hist[x]) 
 
     # error checking
-    print hist
-    print sortedlist
+    # print hist
+    # print sortedlist
 
     # return gesorteerde lijst
     return sortedlist
@@ -39,26 +39,32 @@ if __name__ == '__main__':
     depth = []
 
     breadthc = []
-    depthc = []
+    depthc1 = []
+    depthc2 = []
 
-    stypes = [20, 22, 28, 32, 37, 39, 41]
+    stypes1 = [20, 22, 28, 32, 37, 39, 41]
+    stypes2 = [28, 30, 32, 33, 36, 37, 38]
 
     # Depth First Search (= efficienter dan Breadth First Search)
-    country = Russia()
+    country = USA()
     oblasts = country.as_list()
-    trav_cell_depth(country.S14)
+    trav_cell_depth(country.Minnesota)
 
     # Weergeef de som van de zendertypes om een indicatie te geven van hoe laag de zendertypes zijn gebleven.
-    weightc = sum([stypes[e.senderType-1] for e in country.as_list()])
+    weight1 = sum([stypes1[e.senderType-1] for e in country.as_list()])
+    weight2 = sum([stypes2[e.senderType-1] for e in country.as_list()])
     weight = sum([e.senderType for e in country.as_list()])
     # print 'Start:', oblasts[start].name, weight
     # print 'Start:', oblasts[start].name, weightc
 
-    depthc.append(weightc)
+    depthc1.append(weight1)
+    depthc2.append(weight2)
     depth.append(weight)
 
     # print resultaat
-    print hist
-
-    print 'DFS: {}'.format(min(depth))
-    print 'DFS costs: {}'.format(min(depthc))
+    
+    print 'Depth-First-Search USA:'
+    print 'Verdeling: ', hist
+    print 'Som van zendertypes: {}'.format(min(depth))
+    print 'Costs (1): {}'.format(min(depthc1))
+    print 'Costs (2): {}'.format(min(depthc2))
